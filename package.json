@@ -1,0 +1,12 @@
+{
+  "name": "TesteBuyco",
+  "version": "1.0.0",
+  "description": "Projeto teste da empresa BuyCo",
+  "main": "index.js",
+  "author": "Jefferson Lins",
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "cypress": "^13.8.0"
+  }
+}
