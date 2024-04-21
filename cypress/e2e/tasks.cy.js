@@ -124,7 +124,7 @@ describe('Teste QA Jefferson Lins', () => {
         cy.contains('button', 'Avançar').click()
         cy.wait(1000)
        // cy.contains('14%').should('be.visible') // verificar se a porcetagem se comportou como deve
-       cy.get('[data-layer="Content"]').click()
+        cy.get('[data-layer="Content"]').click()
 
 
 
