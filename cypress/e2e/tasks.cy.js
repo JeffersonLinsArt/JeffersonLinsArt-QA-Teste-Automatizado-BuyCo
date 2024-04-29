@@ -77,7 +77,7 @@ describe('Teste QA Jefferson Lins', () => {
         cy.contains('button', 'Avançar').click()
     })
     
-    it.only('Motivo da Avaliação', () => {
+    it('Motivo da Avaliação', () => {
         cy.visit('https://oip-383-bugs-cave.buyco.com.br')
         cy.contains('button', 'Avançar').click()
         cy.contains('button', 'Mensal').click()
@@ -110,12 +110,15 @@ describe('Teste QA Jefferson Lins', () => {
         cy.contains('button', 'Voltar').click()
         cy.wait(1000)
         cy.get('.tw-flex-wrap > :nth-child(8)').click() //Outro
-        cy.get('#input-103').click().type('Motivo')
+        cy.contains('button', 'Avançar').click()
+        cy.contains('Para preencher a etapa Resultados primeiro preencha: Motivo da Avaliação.').should('be.visible')
+        cy.contains('button', 'Voltar').click()
+        cy.get('#input-115').click().type('Motivo')
         cy.contains('button', 'Avançar').click()
         cy.contains('button', 'Voltar').click()
         cy.wait(1000)
     })
-    it.only('Resultados', () => {
+    it('Resultados', () => {
         cy.visit('https://oip-383-bugs-cave.buyco.com.br')
         cy.contains('button', 'Avançar').click()
         cy.contains('button', 'Anual').click()
@@ -123,14 +126,27 @@ describe('Teste QA Jefferson Lins', () => {
         cy.get('#input-12').click().type('Motivo')
         cy.contains('button', 'Avançar').click()
         cy.wait(1000)
-       // cy.contains('14%').should('be.visible') // verificar se a porcetagem se comportou como deve
-        cy.get('[data-layer="Content"]').click()
-
-
-
-
-
-
-
+        cy.contains('14%').should('be.visible') // verificar se a porcetagem se comportou como deve ao avançar a etapa
+        cy.get('.v-form > :nth-child(1) > .tw-bg-white').click()
+        cy.contains('Avançado').should('be.visible')
+        cy.contains('Esse valor deve ser pelo menos R$ 1.000').should('be.visible')
+        cy.get('#input-17').click().type('2000')
+        cy.contains('29%').should('be.visible') // verificar se a porcetagem se comportou como deve ao avançar a etapa
+        cy.contains('Despesas').should('be.visible')
+        cy.get('.v-form > :nth-child(1) > .tw-bg-white').click()
+        cy.contains('Simples').should('be.visible')
+        cy.contains('button', 'Avançar').click()
+        cy.get('#input-45').click().type('2000')
+        cy.get(':nth-child(2) > .tw-mt-3 > .v-btn > .v-btn__content > .mdi-help-circle-outline').click()
+        cy.contains('Nesse campo você deve preencher os valores referentes a estoques e almoxarifado').should('be.visible')
+        cy.contains('dolor et').should('be.visible')
+        cy.contains('button', 'Fechar').click() 
+        cy.get('#input-48').click().type('2000')    
+        cy.get(':nth-child(4) > .tw-mt-3 > .v-btn > .v-btn__content > .mdi-help-circle-outline').click()
+        cy.wait(1000)
+        cy.contains('Neste campo você deve preencher o valor total que você possui em imóveis, computadores, mesas, maquinários, equipamentos, etc.').should('be.visible')
+        cy.contains('button', 'Fechar').click() 
+        cy.contains('43%').should('be.visible') // verificar se a porcetagem se comportou como deve ao avançar a etapa
+        cy.contains('button', 'Avançar').click()
     })
 })
